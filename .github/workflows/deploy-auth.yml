@@ -16,7 +16,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t 20110012/auth .
+      - run: cd auth-service && docker build -t 20110012/auth .
       - run: docker push 20110012/auth
       # - uses: digitalocean/action-doctl@v2
       #   with:

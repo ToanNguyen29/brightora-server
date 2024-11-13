@@ -16,7 +16,7 @@ jobs:
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      - run: docker build -t 20110012/cart .
+      - run: cd cart-service && docker build -t 20110012/cart .
       - run: docker push 20110012/cart
       # - uses: digitalocean/action-doctl@v2
       #   with:
