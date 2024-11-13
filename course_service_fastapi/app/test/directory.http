@@ -1,0 +1,79 @@
+
+###
+@directory_id=a93a5ead-7e99-47b4-bb4d-869e9f6b8229
+
+### Add a new lesson
+POST http://127.0.0.1:8000/api/v1/directory/
+Content-Type: application/json
+
+{
+    "path": "/CapstoneProject/document",
+    "google_id": "1TEDS41usfXwJ-kXOGyKpMvuJ-QjtoPiH"
+}
+
+###
+
+### Get a lesson by ID (replace `{{directory_id}}` with a valid lesson ID after creating a lesson)
+GET http://127.0.0.1:8000/api/v1/directory/{{directory_id}}
+Content-Type: application/json
+
+###
+
+### Update a lesson by ID (replace `{{directory_id}}` with a valid lesson ID)
+PUT http://127.0.0.1:8000/api/v1/directory/{{directory_id}}
+Content-Type: application/json
+
+{
+  "title": "Updated Lesson Title",
+  "description": "Updated description.",
+  "link": "http://example.com/updated",
+  "section_id": "section_123",
+  "type": "Article",
+  "preview": true
+}
+
+###
+
+### Delete a lesson by ID (replace `{{directory_id}}` with a valid lesson ID)
+DELETE http://127.0.0.1:8000/api/v1/directory/{{directory_id}}
+Content-Type: application/json
+
+
+#### RUN 
+
+POST http://capstoneproject.com/api/v1/directory/
+Content-Type: application/json
+
+{
+    "path": "/CapstoneProject",
+    "google_id": "1pdDBDK0VwkJn9GkF0akd3jXWgm7EL4xB"
+}
+
+###
+POST http://127.0.0.1:8000/api/v1/directory/
+Content-Type: application/json
+
+{
+    "path": "/CapstoneProject/video",
+    "google_id": "1f2UKA5aP6JimNpWYdXOk1oLt0QMNsm6U"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/v1/directory/
+Content-Type: application/json
+
+{
+    "path": "/CapstoneProject/image",
+    "google_id": "12LIwvIE_xGT_lsgfGPnv2ouJsRu9jDyO"
+}
+
+###
+
+POST http://127.0.0.1:8000/api/v1/directory/
+Content-Type: application/json
+
+{
+    "path": "/CapstoneProject/document",
+    "google_id": "1TEDS41usfXwJ-kXOGyKpMvuJ-QjtoPiH"
+}

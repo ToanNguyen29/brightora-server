@@ -1,0 +1,70 @@
+@exercise_id=bc17f564b8
+
+
+### Add a new exercise
+POST http://127.0.0.1:5000/api/v1/users/login
+Content-Type: application/json
+
+{
+    "email": "locle363@gmail.com",
+    "password":"123"
+}
+
+###
+POST http://127.0.0.1:5000/api/v1/users/logout
+Content-Type: application/json
+
+
+###
+
+### Get an exercise by ID
+GET http://127.0.0.1:8000/api/v1/exercise/{{exercise_id}}
+Content-Type: application/json
+
+###
+
+### Update an exercise by ID
+PUT http://127.0.0.1:8000/api/v1/exercise/{{exercise_id}}
+Content-Type: application/json
+
+{
+  "questions": [
+    {
+      "question_text": "What is the capital of Germany?",
+      "choices": [
+        {"option_text": "Berlin", "is_correct": true},
+        {"option_text": "Paris", "is_correct": false},
+        {"option_text": "London", "is_correct": false},
+        {"option_text": "Rome", "is_correct": false}
+      ],
+      "correct_explanation": "Berlin is the capital of Germany."
+    },
+    {
+      "question_text": "What is the capital of Germany?",
+      "choices": [
+        {"option_text": "Berlin", "is_correct": true},
+        {"option_text": "Paris", "is_correct": false},
+        {"option_text": "London", "is_correct": false},
+        {"option_text": "Rome", "is_correct": false}
+      ],
+      "correct_explanation": "Berlin is the capital of Germany."
+    }
+  ]
+}
+
+###
+
+### Delete an exercise by ID
+DELETE http://127.0.0.1:8000/api/v1/exercise/{{exercise_id}}
+
+
+### Gen questions
+POST http://127.0.0.1:8000/api/v1/exercise/gen_questions
+Content-Type: application/json
+
+{
+  "count":3,
+  "lang":"vi",
+  "difficult":3,
+  "description":"Python"
+}

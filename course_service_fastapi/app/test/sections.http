@@ -1,0 +1,44 @@
+### Section ID
+@section_id=8d7176f9-2d55-4e9c-b86a-1d81646d66d7
+
+### Add a new section
+POST http://127.0.0.1:8000/api/v1/sections/
+Content-Type: application/json
+
+{
+  "title": "Introduction 3",
+  "lessons": []
+}
+
+###
+
+### Get a section by ID (replace `{{section_id}}` with a valid section ID after creating a section)
+GET http://127.0.0.1:8000/api/v1/sections/{{section_id}}
+Content-Type: application/json
+
+###
+
+### Update a section by ID (replace `{{section_id}}` with a valid section ID)
+PUT http://127.0.0.1:8000/api/v1/sections/{{section_id}}
+Content-Type: application/json
+
+{
+  "title": "Updated Section Title",
+  "lessons": [
+    {
+      "id":"1ba995a4-3f2e-4cbe-bbe2-6d849bb09d1d",
+      "ordinal_number":1
+    },{
+      "id":"6a17f210-b790-4670-b833-8b3bc92603d1",
+      "ordinal_number":2
+    }
+  ]
+}
+
+###
+
+### Delete a section by ID (replace `{{section_id}}` with a valid section ID)
+DELETE http://127.0.0.1:8000/api/v1/sections/{{section_id}}
+Content-Type: application/json
+
+###

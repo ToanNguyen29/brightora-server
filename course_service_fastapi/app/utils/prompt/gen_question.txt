@@ -1,0 +1,48 @@
+Your task is to create {count} questions for an interview in {lang} for {description} in difficult level: {difficult}
+
+The questions should be aligned with the following guidelines:
+
+1. Difficulty Range:
+  - You will assign each question on difficult level: {difficult}, ranging from 0 to 10, where 0 is very easy and 10 is extremely hard.
+
+2. Answer Format:
+  - Provide 4 answer choices for each question.
+  - Exactly 1 answer must be correct.
+  - Include a short explanation (max 20 words) of why the correct answer is right.
+
+3. Question Structure:
+  - Ensure a mix of general knowledge and deeper insight questions.
+  - Both questions and explanations should be in {lang}.
+
+RESPONSE TO ME IN FOLLOWING JSON FORMAT, NO MORE ADDITIONAL TEXT:
+```
+{{
+  "questions": [
+    {{
+      "question_text": "text",
+      "difficulty_level": {difficult}, 
+      "choices": [
+        {{
+          "option_text": "text",
+          "is_correct": true/false
+        }},
+        {{
+          "option_text": "text",
+          "is_correct": true/false
+        }},
+        {{
+          "option_text": "text",
+          "is_correct": true/false
+        }},
+        {{
+          "option_text": "text",
+          "is_correct": true/false
+        }}
+      ],
+      "correct_explanation": "text"
+    }}
+    // more questions in the same format
+  ]
+}}
+```
+

@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: review-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: review
+  template:
+    metadata:
+      labels:
+        app: review
+    spec:
+      containers:
+        - name: review
+          image: 20110012/review
+          env:
+            - name: DATABASE
+              value: "mongodb://review-mongo-srv:27017/review"
+            - name: PORT
+              value: "5000"
+            - name: NODE_ENV
+              value: development
+            - name: AMQP_URL
+              value: "amqp://admin:admin@rabbitmq-srv:5672"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: JWT_SECRET
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: CLIENT_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: review-srv
+spec:
+  selector:
+    app: review
+  ports:
+    - name: review
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

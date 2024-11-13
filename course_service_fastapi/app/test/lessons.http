@@ -1,0 +1,58 @@
+
+### Lesson ID
+@lesson_id=1ba995a4-3f2e-4cbe-bbe2-6d849bb09d1d
+
+### Add a new lesson
+POST http://127.0.0.1:8000/api/v1/lessons/
+Content-Type: application/json
+
+{
+  "title": "New Lesson 2",
+  "description": "Lesson Description 2",
+  "video_url": "http://example.com/video",
+  "duration": 120,
+  "documents": [
+    {
+      "title": "Document 1",
+      "file_url": "http://example.com/doc1.pdf",
+      "file_type": "pdf"
+    },
+    {
+      "title": "Document 2",
+      "file_url": "http://example.com/doc2.pdf"
+    }
+  ]
+}
+
+###
+
+
+### Get a lesson by ID (replace `{{lesson_id}}` with a valid lesson ID after creating a lesson)
+GET http://127.0.0.1:8000/api/v1/lessons/{{lesson_id}}
+Content-Type: application/json
+
+###
+
+### Update a lesson by ID (replace `{{lesson_id}}` with a valid lesson ID)
+PUT http://127.0.0.1:8000/api/v1/lessons/{{lesson_id}}
+Content-Type: application/json
+
+{
+  "title": "Updated Lesson Title",
+  "description": "Updated lesson description.",
+  "video_url": "http://example.com/updated_video",
+  "duration": 130,
+  "documents": [
+    {
+      "title": "Updated Document",
+      "file_url": "http://example.com/updated_doc.pdf",
+      "file_type": "pdf"
+    }
+  ]
+}
+
+###
+
+### Delete a lesson by ID (replace `{{lesson_id}}` with a valid lesson ID)
+DELETE http://127.0.0.1:8000/api/v1/lessons/{{lesson_id}}
+Content-Type: application/json

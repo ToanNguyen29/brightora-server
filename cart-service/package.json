@@ -1,0 +1,27 @@
+{
+  "name": "cart-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon src/server.js",
+    "start:prod": "NODE_ENV=production node src/server.js"
+  },
+  "keywords": [],
+  "author": "toan nguyen",
+  "license": "ISC",
+  "dependencies": {
+    "@capstoneproject2024/common": "^1.3.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^4.21.1",
+    "mongoose": "^8.7.1",
+    "validator": "^13.12.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.4",
+    "dotenv": "^16.4.5",
+    "morgan": "^1.10.0"
+  }
+}

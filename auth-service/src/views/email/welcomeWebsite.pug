@@ -1,0 +1,23 @@
+extends baseEmail
+
+block content
+  h1 Welcome to Brightora!
+  p Hi #{firstName}, we&rsquo;re thrilled to help you start your learning journey!
+  p
+      | At Brightora, you&rsquo;ll find a wide selection of courses designed to help
+      | you grow and succeed in your field. Dive into our course catalog and
+      | explore new learning opportunities. 🎉🙏
+  p
+      | Don&rsquo;t hesitate to reach out if you need any assistance along the way.
+      | We&rsquo;re here to make your experience inspiring and enriching!
+  table.btn.btn-primary(role='presentation', border='0', cellpadding='0', cellspacing='0')
+    tbody
+      tr
+        td(align='left')
+          table(role='presentation', border='0', cellpadding='0', cellspacing='0')
+            tbody
+              tr
+                td
+                  a(href=`${url}`, target='_blank') Go to website
+  p If you need any help, please don't hesitate to contact me!
+  p BrightOra

@@ -1,0 +1,59 @@
+
+@course_id=3e20c7fdd1
+
+### Add a new course
+POST http://127.0.0.1:8000/api/v1/courses/
+Content-Type: application/json
+
+{
+  "title": "Test Course",
+  "category": ["development"],
+  "time_spend": 10,
+  "type": "Development",
+  "owner_id": "owner_123",
+  "objectives": "Learn FastAPI/v1",
+}
+
+###
+
+
+
+### Get a course by ID (replace `{{course_id}}` with a valid course ID after creating a course)
+GET http://127.0.0.1:8000/api/v1/courses/{{course_id}}
+Content-Type: application/json
+
+###
+
+### Update a course by ID (replace `{{course_id}}` with a valid course ID)
+PUT http://127.0.0.1:8000/api/v1/courses/{{course_id}}
+Content-Type: application/json
+
+{
+  "sections":
+  [
+    {
+      "id":"8d7176f9-2d55-4e9c-b86a-1d81646d66d7",
+      "ordinal_number":1
+    },
+    {
+      "id":"c4b38c24-32b7-4db1-9ca3-6bb8d3043a8d",
+      "ordinal_number":2
+    },
+    {
+      "id":"167f59ac-c19e-4b93-ba4e-a340abd04988",
+      "ordinal_number":3
+    }
+  ]
+}
+
+###
+GET http://127.0.0.1:8000/api/v1/courses/get_curriculum/{{course_id}}
+Content-Type: application/json
+
+###
+
+### Delete a course by ID (replace `{{course_id}}` with a valid course ID)
+DELETE http://127.0.0.1:8000/api/v1/courses/{{course_id}}
+Content-Type: application/json
+
+###

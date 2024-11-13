@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: course-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: course
+  template:
+    metadata:
+      labels:
+        app: course
+    spec:
+      containers:
+        - name: course
+          image: 20110012/course
+          env:
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: JWT_SECRET
+                  key: JWT_SECRET
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: CLIENT_URL
+            - name: MONGO_DATABASE_URL
+              value: "mongodb://course-mongo-srv:27017"
+            - name: MONGO_DBNAME
+              value: course_db
+            - name: AMQP_URL
+              value: "amqp://admin:admin@rabbitmq-srv:5672"
+            - name: MONGO_USER
+              value: "mongodb://course-mongo-srv:27017"
+            - name: GOOGLE_DRIVE_OAUTH_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_DRIVE_OAUTH_URL
+            - name: GOOGLE_DRIVE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_DRIVE_CLIENT_ID
+            - name: GOOGLE_DRIVE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_DRIVE_CLIENT_SECRET
+            - name: GOOGLE_DRIVE_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_DRIVE_REFRESH_TOKEN
+            - name: SERVER_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: SERVER_URL
+            - name: RABBITMQ_USER
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: RABBITMQ_USER
+            - name: RABBITMQ_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: RABBITMQ_PASSWORD
+            - name: RABBITMQ_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: RABBITMQ_HOST
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: OPENAI_API_KEY
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: course-srv
+spec:
+  selector:
+    app: course
+  ports:
+    - name: course
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

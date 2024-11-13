@@ -1,0 +1,25 @@
+name: deploy-course
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - "course_service_fastapi/**"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: cd course-service && docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker build -t 20110012/course .
+      - run: docker push 20110012/course
+      # - uses: digitalocean/action-doctl@v2
+      #   with:
+      #     token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      # - run: doctl kubernetes cluster kubeconfig save bd2b98be-3ca3-4ffb-be45-342b89a3bd2e
+      # - run: kubectl rollout restart deployment course-depl

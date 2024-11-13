@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cart
+  template:
+    metadata:
+      labels:
+        app: cart
+    spec:
+      containers:
+        - name: cart
+          image: 20110012/cart
+          env:
+            - name: DATABASE
+              value: "mongodb://cart-mongo-srv:27017/cart"
+            - name: PORT
+              value: "5000"
+            - name: NODE_ENV
+              value: development
+            - name: AMQP_URL
+              value: "amqp://admin:admin@rabbitmq-srv:5672"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: JWT_SECRET
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: CLIENT_URL
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cart-srv
+spec:
+  selector:
+    app: cart
+  ports:
+    - name: cart
+      protocol: TCP
+      port: 5000
+      targetPort: 5000

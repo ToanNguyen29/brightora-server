@@ -1,0 +1,104 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: auth
+  template:
+    metadata:
+      labels:
+        app: auth
+    spec:
+      containers:
+        - name: auth
+          image: 20110012/auth
+          env:
+            - name: DATABASE
+              value: "mongodb://auth-mongo-srv:27017/auth"
+            - name: PORT
+              value: "5000"
+            - name: NODE_ENV
+              value: development
+            - name: AMQP_URL
+              value: "amqp://admin:admin@rabbitmq-srv:5672"
+            - name: JWT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: JWT_SECRET
+            - name: JWT_EXPIRES_IN
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: JWT_EXPIRES_IN
+            - name: GMAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GMAIL_USERNAME
+            - name: GMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GMAIL_PASSWORD
+            - name: EMAIL_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: EMAIL_USERNAME
+            - name: EMAIL_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: EMAIL_PASSWORD
+            - name: EMAIL_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: EMAIL_HOST
+            - name: EMAIL_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: EMAIL_PORT
+            - name: CLIENT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: CLIENT_URL
+            - name: GOOGLE_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_CLIENT_ID
+            - name: GOOGLE_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GOOGLE_CLIENT_SECRET
+            - name: GITHUB_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GITHUB_CLIENT_ID
+            - name: GITHUB_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: brightora-secret
+                  key: GITHUB_CLIENT_SECRET
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: auth-srv
+spec:
+  selector:
+    app: auth
+  ports:
+    - name: auth
+      protocol: TCP
+      port: 5000
+      targetPort: 5000
