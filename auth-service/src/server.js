@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-const dotenv = require('dotenv');
+// const dotenv = require('dotenv');
 
 process.on('uncaughtException', (err) => {
   console.log(err.name, err.message, err);
@@ -8,7 +8,7 @@ process.on('uncaughtException', (err) => {
 });
 
 // dotenv.config({ path: './src/.env' });
-// const app = require('./app');
+const app = require('./app');
 
 if (!process.env.DATABASE) {
   console.log('Error! DATABASE environment variable not found.');
