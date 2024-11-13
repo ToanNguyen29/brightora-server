@@ -7,8 +7,8 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-dotenv.config({ path: './src/.env' });
-const app = require('./app');
+// dotenv.config({ path: './src/.env' });
+// const app = require('./app');
 
 if (!process.env.DATABASE) {
   console.log('Error! DATABASE environment variable not found.');
