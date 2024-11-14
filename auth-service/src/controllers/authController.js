@@ -21,12 +21,19 @@ const createSendToken = async (statusCode, user, res, isRedirect) => {
 
   const cookieOption = {
     expires: new Date(
-      Date.now() +
-        Number(process.env.JWT_COOKIE_EXPIRES_IN) * 24 * 60 * 60 * 1000
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
     httpOnly: true,
     path: '/'
   };
+
+  console.log(
+    cookieOption,
+    ' - date',
+    new Date(
+      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
+    )
+  );
 
   if (process.env.NODE_ENV === 'production') {
     cookieOption.secure = true;
