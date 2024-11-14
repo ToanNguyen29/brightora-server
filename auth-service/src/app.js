@@ -38,7 +38,7 @@ app.use(
       process.env.CLIENT_URL,
       'http://localhost:3000',
       'https://localhost:3000',
-      'https://capstoneproject.com',
+      // 'https://capstoneproject.com',
       'http://capstoneproject.com'
     ],
     credentials: true
