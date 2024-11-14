@@ -1,6 +1,7 @@
 const { Publisher } = require('@capstoneproject2024/common');
 
 exports.userCreated = async (newUser) => {
+  console.log('user: ', newUser);
   const publisher = new Publisher('capstone_user_exchange', 'user_created');
   await publisher.connect();
   await publisher.publish({
