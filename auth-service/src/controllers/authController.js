@@ -26,6 +26,8 @@ const createSendToken = async (statusCode, user, res, isRedirect) => {
     httpOnly: true
   };
 
+  console.log(token, cookieOption);
+
   if (process.env.NODE_ENV === 'production') {
     cookieOption.secure = true;
   }
