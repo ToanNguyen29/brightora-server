@@ -35,10 +35,9 @@ app.use((req, res, next) => {
 app.use(
   cors({
     origin: [
-      process.env.CLIENT_URL,
       'http://localhost:3000',
+      process.env.CLIENT_URL,
       'https://localhost:3000',
-      // 'https://capstoneproject.com',
       'http://capstoneproject.com'
     ],
     credentials: true
