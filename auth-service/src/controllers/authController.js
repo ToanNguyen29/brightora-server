@@ -39,7 +39,7 @@ const createSendToken = async (statusCode, user, res, isRedirect) => {
   } else {
     res.status(statusCode).json({
       status: 'success',
-      token: token,
+      token,
       data: user
     });
   }
