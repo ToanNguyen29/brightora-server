@@ -36,6 +36,7 @@ app.use(
   cors({
     origin: [
       process.env.CLIENT_URL,
+      'http://localhost:3000',
       'https://localhost:3000',
       'https://capstoneproject.com',
       'http://capstoneproject.com'
