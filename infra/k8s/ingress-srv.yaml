@@ -7,7 +7,7 @@ metadata:
     nginx.ingress.kubernetes.io/use-regex: "true"
 spec:
   rules:
-    - host: 170.64.250.110
+    - host: "*"
       http:
         paths:
           - pathType: ImplementationSpecific
