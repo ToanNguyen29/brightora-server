@@ -23,15 +23,14 @@ const createSendToken = async (statusCode, user, res, isRedirect) => {
     expires: new Date(
       Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
     ),
-    httpOnly: true,
-    sameSite: 'None'
+    httpOnly: true
   };
-
-  console.log(token, cookieOption);
 
   if (process.env.NODE_ENV === 'production') {
     cookieOption.secure = true;
   }
+
+  console.log(token, cookieOption);
 
   res.cookie('jwt', token, cookieOption);
 
