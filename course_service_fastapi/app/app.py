@@ -25,6 +25,6 @@ app.include_router(section_router, prefix="/api/v1/sections")
 app.include_router(exercise_router, prefix="/api/v1/exercise")
 
 
-# @app.on_event("startup")
-# def startup_event():
-#     start_consuming_thread()
+@app.on_event("startup")
+def startup_event():
+    start_consuming_thread()

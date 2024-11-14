@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
-const dotenv = require('dotenv');
-dotenv.config({ path: './src/.env' });
+// const dotenv = require('dotenv');
+// dotenv.config({ path: './src/.env' });
 
 const app = require('./app');
 const courseUpdatedConsumer = require('./events/consumer/course/courseUpdated');
