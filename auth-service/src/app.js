@@ -18,14 +18,14 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json()); // chuyển đổi req.body thành dạng đối tượng javascript
-app.use(express.urlencoded({ extended: true, limit: '20kb' }));
+// app.use(express.urlencoded({ extended: true, limit: '20kb' }));
 app.use(express.static(`${__dirname}/public`)); // Serving static files
 
 app.use(cookieParser());
-app.use(helmet());
-app.use(mongoSanitize());
-app.use(xss());
-app.use(compression());
+// app.use(helmet());
+// app.use(mongoSanitize());
+// app.use(xss());
+// app.use(compression());
 
 app.use((req, res, next) => {
   req.requestTime = new Date().toISOString();
